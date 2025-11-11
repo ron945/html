@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Pixel Brawl — 本地雙人格鬥</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* 簡單內嵌樣式，若需要可移到 style.css */
+body { margin:0; background:#111; color:#eee; font-family: Arial, Helvetica, sans-serif; text-align:center; }
+button { margin:6px; padding:10px 20px; font-size:16px; cursor:pointer; }
+select { margin:0 6px; padding:4px; font-size:14px; }
+#game { display:none; margin:0 auto; background: linear-gradient(#2b2b2b,#1c1c1c); image-rendering: pixelated; }
+.mapItem { display:inline-block; margin:8px; vertical-align:top; text-align:center; }
+.mapItem canvas { display:block; margin-bottom:6px; border:1px solid #444; background:#111; }
+#overlayMsg { position: absolute; left:50%; top:50%; transform:translate(-50%,-50%); pointer-events:none; color:#fff; text-align:center; }
+</style>
+</head>
+<body>
+
+<!-- 主選單 -->
+<div id="menu">
+  <h1>Pixel Brawl</h1>
+
+  <h3>選擇遊戲模式</h3>
+  <button id="localBtn">本地雙人</button>
+  <button id="onlineBtn">連線對戰（未實作）</button>
+
+  <h3>選擇玩家顏色</h3>
+  <p>P1:
+    <select id="p1Color">
+      <option value="#000000">黑</option>
+      <option value="#FFFFFF">白</option>
+      <option value="#FF0000">紅</option>
+      <option value="#FFA500">橙</option>
+      <option value="#FFFF00">黃</option>
+      <option value="#00FF00">綠</option>
+      <option value="#00FFFF">青</option>
+      <option value="#0000FF">藍</option>
+      <option value="#8B00FF">紫</option>
+    </select>
+  </p>
+
+  <p>P2:
+    <select id="p2Color">
+      <option value="#FFFFFF">白</option>
+      <option value="#000000">黑</option>
+      <option value="#FF0000">紅</option>
+      <option value="#FFA500">橙</option>
+      <option value="#FFFF00">黃</option>
+      <option value="#00FF00">綠</option>
+      <option value="#00FFFF">青</option>
+      <option value="#0000FF">藍</option>
+      <option value="#8B00FF">紫</option>
+    </select>
+  </p>
+
+  <div>
+    <button id="mapSelectBtn">選擇地圖</button>
+    <p id="selectedMapLabel">已選地圖：平地地圖</p>
+  </div>
+</div>
+
+<!-- 地圖選單（縮圖） -->
+<div id="mapMenu" style="display:none;">
+  <h2>選擇地圖</h2>
+  <div id="mapList"></div>
+  <div style="margin-top:10px;">
+    <button id="backToMenuBtn">返回主選單</button>
+    <button id="randomMapBtn">隨機地圖</button>
+  </div>
+</div>
+
+<!-- Canvas -->
+<canvas id="game" width="900" height="500"></canvas>
+<div id="overlayMsg" style="display:none;"></div>
+
+<!-- 地圖定義（模組） -->
+<script src="maps.js"></script>
+<!-- 遊戲主程式 -->
+<script src="game.js"></script>
+</body>
+</html>
