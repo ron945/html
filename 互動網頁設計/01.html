@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我喜歡的動漫角色介紹</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(-45deg, #000000, #111111, #222222, #000000);
+            background-size: 400% 400%;
+            animation: gradientWave 15s ease infinite;
+            margin: 0;
+            padding: 0;
+            color: #eee; /* 文字淺色 */
+        }
+        @keyframes gradientWave {
+            0% {background-position:0% 50%;}
+            50% {background-position:100% 50%;}
+            100% {background-position:0% 50%;}
+        }
+        header {
+            background: #111111; /* 標題深色 */
+            color: #eee; /* 標題文字淺色 */
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        header:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 18px rgba(255, 111, 145, 0.6);
+        }
+        header::after {
+            content: "";
+            position: absolute;
+            left: -100%;
+            bottom: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ff6f91, transparent);
+            animation: wave 2s infinite;
+        }
+        @keyframes wave {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: -100%; }
+        }
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+        .card {
+            background: #111111; /* 卡片深色 */
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .card img {
+            max-width: 100%;
+            border-radius: 12px;
+        }
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            background: #333333; /* 按鈕深色 */
+            color: #eee; /* 按鈕文字淺色 */
+            cursor: pointer;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        button:hover {
+            background: #444444;
+        }
+        .ripple-span {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            animation: ripple-effect 0.6s ease-out;
+        }
+        @keyframes ripple-effect {
+            to {
+                transform: translate(-50%, -50%) scale(12);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>我喜歡的動漫角色介紹</h1>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h3>選擇角色（點擊跳到該角色）</h3>
+            <button onclick="scrollToChar('char0')">洛伊德</button>
+            <button onclick="scrollToChar('char1')">約兒</button>
+            <button onclick="scrollToChar('char2')">阿妮亞</button>
+        </div>
+
+        <div class="card" id="char0">
+            <h2>洛伊德佛傑</h2>
+            <img src="FP6BDtdWUAUXq4y.jpg" alt="角色圖片" style="width:350px; height:auto;">
+            <p>代號「黃昏」的頂尖間諜，擅長偽裝與戰術，為任務建立偽裝家庭，是冷靜又可靠的父親角色。</p>
+        </div>
+
+        <div class="card" id="char1">
+            <h2>約兒</h2>
+            <img src="3F3F3F3F3F.jpg" alt="角色圖片" style="width:350px; height:auto;">
+            <p>白天是溫柔內向的市政廳職員，實際上是代號「刺針公主」的殺手，身手敏捷，為掩飾身份而進入假婚姻。</p>
+        </div>
+
+        <div class="card" id="char2">
+            <h2>阿妮亞</h2>
+            <img src="下載.jpg" alt="角色圖片" style="width:350px; height:auto;">
+            <p>具備讀心能力的小女孩，活潑好奇，能聽到他人心聲，為了擁有溫暖家庭而珍惜佛傑家的生活。 </p>
+        </div>
+    </div>
+
+    <script>
+        function scrollToChar(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON') {
+                const btn = e.target;
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple-span');
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                btn.appendChild(ripple);
+                setTimeout(() => { ripple.remove(); }, 600);
+            }
+        });
+    </script>
+</body>
+</html>
