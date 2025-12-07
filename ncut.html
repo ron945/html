@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>勤益資管系 - 霓虹暗色互動版</title>
+<style>
+  body {
+    margin: 0;
+    font-family: "Microsoft JhengHei", sans-serif;
+    background: #0a0c1b;
+    color: #cfe3ff;
+  }
+
+  .glow {
+    text-shadow: 0 0 8px #6ab3ff, 0 0 16px #7f5bff;
+  }
+
+  header {
+    background: #0f1126;
+    padding: 25px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    color: #9bc9ff;
+    border-bottom: 2px solid #162044;
+    box-shadow: 0 0 20px rgba(80,130,255,0.3);
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    background: #11152d;
+    padding: 15px 0;
+    border-bottom: 1px solid #1e2b56;
+  }
+  nav a {
+    color: #cfe3ff;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: 0.3s;
+    font-size: 16px;
+  }
+  nav a:hover {
+    background: rgba(100,120,255,0.2);
+    box-shadow: 0 0 10px #6ab3ff;
+  }
+
+  .banner {
+    width: 100%;
+    height: 280px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+  }
+  .banner img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.45);
+  }
+  .banner-text {
+    position: relative;
+    z-index: 3;
+    text-shadow: 0 0 12px #6ab3ff, 0 0 18px #7f5bff;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+  }
+
+  .card {
+    background: #11152d;
+    margin: 20px auto;
+    padding: 22px;
+    border-radius: 14px;
+    border: 1px solid #25346a;
+    box-shadow: 0 0 15px rgba(90,110,255,0.25);
+    cursor: pointer;
+    transition: 0.3s ease;
+    max-width: 900px;
+  }
+  .card:hover {
+    box-shadow: 0 0 22px rgba(120,150,255,0.5);
+  }
+
+  .card-content {
+    display: none;
+    padding-top: 12px;
+    animation: slideDown 0.4s ease;
+  }
+  .card.open .card-content {
+    display: block;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .slideshow {
+    position: relative;
+    overflow: hidden;
+  }
+  .slideshow .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+  }
+  .slideshow .slide.active {
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+
+<header class="glow">國立勤益科技大學｜資訊管理系</header>
+
+<nav>
+  <a href="#history" onclick="openSection('history')">關於本系</a>
+  <a href="#teacher" onclick="openSection('teacher')">師資介紹</a>
+  <a href="#course" onclick="openSection('course')">課程資訊</a>
+</nav>
+
+<div class="banner slideshow">
+  <img class="slide" src="mobileadv_975_4480204_31167.jpg" alt="Banner 1">
+  <img class="slide" src="mobileadv_1593_3056893_93409.jpg" alt="Banner 2">
+  <img class="slide" src="mobileadv_1658_5179352_12721.jpg" alt="Banner 3">
+  <div class="banner-text">歡迎來到資管系</div>
+</div>
+
+<div class="accordion">
+
+  <!-- 系所沿革與現況 -->
+  <div class="card" id="history" onclick="toggleCard(this)">
+    <h3 class="glow">🏫 系所沿革與現況</h3>
+    <div class="card-content">
+      <p>為配合政府發展資訊產業及因應企業對資訊化人力的需求，本系奉准於民國八十三年成立，在全體師生努力下，本系日益成長茁壯。</p>
+
+      <p>本系成立初期招收日間部二專學生二班，招收對象以高中、高職畢業生為主。並於85學年度成立夜間部二專班，招收二專學生一班，86學年度起招收夜二專學生二班，87學年度增設進修專校二專二班，民國88年，夜間部改名為「進修推廣部」。至88學年度，本系計有二專日間部四班、二專進修部六班、進修專校六班。91學年度奉准成立四技日間部一班、二專日間部二班、二專進修推廣部一班、進修專校二班。</p>
+
+      <p>93學年度二專日間部停招，招收四技日間部二班、四技進修部一班、進修學院二技一班。98年2月以一系一所模式與「研發與科技管理研究所」進行整併，並於98年8月將本系研究所改名為「研發科技與資訊管理研究所」。102年6月為因應系所融合問題及符合本校院發展目標，本系研究所申請改名為「資訊管理系碩士班」，並依據教育部102年12月2日臺教技(二)字第1020177078號核定本系以資訊管理系日間碩士班進行招生。至102學年度，本系計有日間部碩士班二班，碩士在職專班二班、四技日間部八班、四技進修部四班。</p>
+
+      <p>本系之發展沿革如下：</p>
+      <p><img src="891130291.png" alt="系所沿革與現況" style="max-width:100%; height:auto;"></p>
+
+      <p>本系目前正式學制現況如下：</p>
+      <ul>
+        <li>日間部碩士班每年一班，計二班。</li>
+        <li>碩士在職專班每年一班，計二班。</li>
+        <li>日間部四年制（四技）每年二班，計八班。</li>
+        <li>進修部四年制（四技）每年一班，計四班。</li>
+        <li>進修部二年制（二技）一班。</li>
+      </ul>
+
+      <p>本系本著PDCA品質管理循環的機制，省思課程教學與系所發展方向，建立自我審視與發展機制，在學校所提供之空間、設備與各年度之經費挹注下，積極執行改善如下：</p>
+
+      <ol>
+        <li>學習成效及教學品保：在既有之基礎上不斷的創新教學模式及推動數位學習，讓學生的學習不受空間與時間之限制。</li>
+        <li>專業發展及產學合作：教師積極參與各類型計畫，如科技部計畫、產學計畫或教育部、經濟部等之委辦計畫，都展現相當好之績效，間接讓學生在校就能參與實務型計畫，增加學生之專業實力。</li>
+        <li>學生輔導：安排導師進行班級輔導，同時辦理企業參訪或學生校外實習等措施，提供學生足夠之就業能力。</li>
+        <li>課程設計：藉由問卷調查，邀請產業暨學術界之專家進行各種座談及系本位課程會議，提供經驗與建議，以合宜修訂各學制之學分計畫表。</li>
+        <li>國際視野：開設全英文課程，鼓勵學生參與國際研討會、開設海外研習課程、或邀請國際學者至本系演講，師生參與國際會議及招收外籍學生以達開拓國際視野之目的。</li>
+      </ol>
+
+      <p>除內部改善機制外，同時定期接受外部評鑑協會或專業認證機構的審視，執行外部迴圈改善機制。自民國96年本校由技術學院改制為科技大學起算，民國98年本系接受社團法人台灣評鑑協會進行系所專業類評鑑；民國103年持續接受社團法人台灣評鑑協會進行系所專業類評鑑；民國108年轉由委請中華民國管理科學學會「華文商管學院認證」；民國110年接受華文商管教育認證期中評估；同年，全學制接受IEET工程教育認證，並通過三年有效年。</p>
+
+      <p>持續改善成效如下：</p>
+      <ul>
+        <li>民國98年接受台評會評鑑：本系榮獲一等通過。</li>
+        <li>民國103年接受台評會評鑑：本系評鑑結果為「通過」。</li>
+        <li>民國108年本系通過ACCSB認證。</li>
+        <li>民國110年本系通過ACCBE認證期中評估。</li>
+        <li>民國111年本系通過IEET工程教育認證。</li>
+      </ul>
+
+      <p>本系依循校、院及所教育目標，規劃學生專業學習及人文素養陶冶，強化學生職場能力及自信心，並於畢業後擁有足夠專業能力順利進入職場服務。秉持既有基礎，將持續強化教師教學與學生學習成效，繼續為社會培育更多資訊管理人才。</p>
+    </div>
+  </div>
+
+  <!-- 師資特色 -->
+<div class="card" id="teacher" onclick="toggleCard(this)">
+  <h3 class="glow">🎓 師資特色</h3>
+  <div class="card-content">
+    <p>教師團隊涵蓋資訊安全、AI、物聯網、資料科學、系統分析等多元領域。</p>
+
+    <hr style="border-color: rgba(255,255,255,0.2); margin: 15px 0;">
+
+    <div style="display:flex; gap:15px; align-items:flex-start;">
+      <img src="mczh-tw120x160_small65544_742681757683.jpg" alt="黃淑賢老師" style="width:120px; height:auto; border-radius:8px; border:1px solid #6ab3ff;">
+      <div>
+        <p><strong>黃淑賢老師</strong></p>
+        <p>職稱：助理教授</p>
+        <p>辦公室：M417</p>
+        <p>信箱：<a href="mailto:sh.huang@ncut.edu.tw" style="color:#6ab3ff;">sh.huang@ncut.edu.tw</a></p>
+        <p>分機：7928</p>
+        <p>學歷：國立成功大學 工程科學系 博士</p>
+        <p>研究方向：遊戲式學習、物聯網、STEAM教育、診斷學習與回饋</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- 課程亮點 -->
+<div class="card" id="course" onclick="toggleCard(this)">
+  <h3 class="glow">📚 課程亮點</h3>
+  <div class="card-content">
+    <p>課程強調專題實作、跨域合作、證照輔導，並與業界技術同步。</p>
+
+    <hr style="border-color: rgba(255,255,255,0.2); margin: 15px 0;">
+
+    <h4>專業/技術科目（四技）</h4>
+    <ul>
+      <li>會計學（一/二）</li>
+      <li>統計學（一/二）</li>
+      <li>實務專題（一/二）</li>
+      <li>校外實習（一/二/暑假）</li>
+      <li>經濟學</li>
+      <li>生產與作業管理</li>
+      <li>科技創新與管理</li>
+      <li>行銷學</li>
+      <li>專業證照檢定輔導</li>
+      <li>企業應用系統開發</li>
+      <li>企業管理</li>
+      <li>資料倉儲與挖掘</li>
+      <li>計算機概論</li>
+      <li>管理數學</li>
+      <li>軟體工程</li>
+      <li>物件導向程式設計</li>
+      <li>資料庫管理系統</li>
+      <li>資訊安全</li>
+      <li>商用程式設計</li>
+      <li>網頁應用程式設計</li>
+      <li>策略管理</li>
+      <li>資料庫入門</li>
+      <li>系統分析與設計</li>
+      <li>供應鏈管理</li>
+      <li>資訊網路</li>
+      <li>資料結構</li>
+      <li>管理心理學</li>
+      <li>資訊管理導論</li>
+      <li>電子商務</li>
+      <li>企業資源規劃導論</li>
+      <li>資訊與法律</li>
+      <li>管理會計</li>
+      <li>顧客關係管理</li>
+      <li>作業研究</li>
+      <li>財務管理</li>
+      <li>演算法</li>
+      <li>消費者行為</li>
+      <li>決策支援系統</li>
+      <li>網路服務與管理</li>
+      <li>離散數學</li>
+      <li>專利與智慧財產權管理</li>
+      <li>多媒體設計</li>
+      <li>作業系統</li>
+      <li>知識管理</li>
+      <li>行動裝置應用程式設計</li>
+      <li>物件導向系統分析與設計</li>
+      <li>資訊分析與搜尋</li>
+      <li>組織行為</li>
+      <li>雲端運算</li>
+      <li>人工智慧</li>
+      <li>影像處理與應用</li>
+      <li>人力資源管理</li>
+      <li>職場工作倫理</li>
+      <li>商用英文</li>
+      <li>系統性創意思考</li>
+      <li>商事法</li>
+      <li>綠色能源與環境資訊管理</li>
+      <li>產學研修實習</li>
+      <li>科技英文</li>
+      <li>資料分析</li>
+      <li>資料壓縮</li>
+      <li>科技管理</li>
+    </ul>
+
+    <h4>專業/技術科目（碩士）</h4>
+    <ul>
+      <li>書報討論（一/二）</li>
+      <li>專利與研發 / 專利佈局</li>
+      <li>研究方法</li>
+      <li>演算法</li>
+      <li>企業創新與管理</li>
+      <li>創新研究</li>
+      <li>資料探勘</li>
+      <li>新興資訊科技與商業創新</li>
+      <li>管理資訊系統</li>
+      <li>資訊安全</li>
+      <li>巨量資料處理</li>
+      <li>影像處理原理</li>
+      <li>萃思創意思考與應用</li>
+      <li>科技管理</li>
+      <li>資料壓縮原理</li>
+      <li>服務創新與管理</li>
+      <li>知識管理</li>
+      <li>軟體工程與管理</li>
+      <li>多變量分析</li>
+      <li>策略管理</li>
+      <li>資訊系統開發與管理</li>
+      <li>結構化方程式</li>
+      <li>科技行銷管理</li>
+      <li>資訊服務管理方法</li>
+      <li>顧客關係管理</li>
+      <li>管理決策分析</li>
+      <li>企業電子化策略</li>
+      <li>科技英文</li>
+      <li>企業資源規劃</li>
+      <li>電子商務</li>
+      <li>綠色能源應用與管理</li>
+      <li>專案管理</li>
+      <li>海外研習</li>
+      <li>多元文化交流實務</li>
+    </ul>
+  </div>
+</div>
+
+
+
+</div>
+
+<script>
+  // 幻燈片
+  let slideIndex = 0;
+  const slides = document.querySelectorAll('.slideshow .slide');
+  slides[0].classList.add('active');
+  setInterval(()=>{
+    slides.forEach(s=>s.classList.remove('active'));
+    slideIndex = (slideIndex + 1) % slides.length;
+    slides[slideIndex].classList.add('active');
+  },4000);
+
+  // 點擊標題收起/展開
+  function toggleCard(card){
+    card.classList.toggle('open');
+  }
+
+  // 導覽按鈕：展開區塊並滾動
+  function openSection(id){
+    const card = document.getElementById(id);
+    if(!card.classList.contains('open')){
+      card.classList.add('open');
+    }
+    card.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+</script>
+
+</body>
+</html>
